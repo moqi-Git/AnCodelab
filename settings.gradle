@@ -1,0 +1,3 @@
+include ':bitmaplab'
+include ':app'
+rootProject.name = "AndroidLab"
