@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:id="@+id/remote_iv_tree"
-        android:src="@drawable/ic_tree"/>
+        android:src="@drawable/ic_christmas_tree"/>
 
     <TextView
         android:id="@+id/remote_iv_words"

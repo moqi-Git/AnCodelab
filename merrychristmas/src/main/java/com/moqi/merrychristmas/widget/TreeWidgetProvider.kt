@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.RemoteViews
 import com.moqi.merrychristmas.MainActivity
 import com.moqi.merrychristmas.R
@@ -41,7 +42,9 @@ class TreeWidgetProvider: AppWidgetProvider() {
         val configIntent = PendingIntent.getActivity(context, 1001, ci, PendingIntent.FLAG_UPDATE_CURRENT)
         val ivTree = RemoteViews(context!!.packageName, R.layout.widget_tree)
         ivTree.setOnClickPendingIntent(R.id.remote_iv_refresh, refreshIntent)
-        ivTree.setOnClickPendingIntent(R.id.remote_iv_tree, configIntent)
+        ivTree.setOnClickPendingIntent(R.id.remote_iv_tree, refreshIntent)
+        ivTree.setViewVisibility(R.id.remote_iv_words, View.GONE)
+        ivTree.setViewVisibility(R.id.remote_iv_refresh, View.GONE)
         AppWidgetManager.getInstance(context).updateAppWidget(appWidgetIds, ivTree)
     }
 
