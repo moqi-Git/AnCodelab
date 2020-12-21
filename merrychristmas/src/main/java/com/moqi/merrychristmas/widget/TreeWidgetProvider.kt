@@ -10,16 +10,33 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
-import com.moqi.merrychristmas.MainActivity
 import com.moqi.merrychristmas.R
 
 class TreeWidgetProvider: AppWidgetProvider() {
 
     private val ACTION_REFRESH = "com.moqi.merrychristmas.tree.ACTION_REFRESH"
 
+
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
-        Log.e("asdfg", "onReceive ${intent?.action}")
+        Log.e("asdfg", "onReceive ${intent?.action}，bundle=${intent?.extras?.keySet()?.contains("light")}")
+        if (intent != null){
+            val action = intent.action
+            when(action){
+                ACTION_REFRESH -> {
+                    val lightOn = intent.getBooleanExtra("light", false)
+//                    Log.e("asdfg", "lightOn = $lightOn")
+                    val remoteTree = RemoteViews(context!!.packageName, R.layout.widget_tree)
+                    if (lightOn){
+                        remoteTree.setViewVisibility(R.id.remote_iv_tree_light, View.VISIBLE)
+                    } else {
+                        remoteTree.setViewVisibility(R.id.remote_iv_tree_light, View.GONE)
+                    }
+
+                    AppWidgetManager.getInstance(context).updateAppWidget(ComponentName(context, TreeWidgetProvider::class.java), remoteTree)
+                }
+            }
+        }
     }
 
     override fun onUpdate(
@@ -30,22 +47,22 @@ class TreeWidgetProvider: AppWidgetProvider() {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
         Log.e("asdfg", "onUpdate")
 
-        val ri = Intent().apply {
+        val lightOn = Intent().apply {
             setAction(ACTION_REFRESH)
             setComponent(ComponentName(context!!, TreeWidgetProvider::class.java))
+            putExtra("light", true)
         }
-        val refreshIntent = PendingIntent.getBroadcast(context, 1000, ri, PendingIntent.FLAG_UPDATE_CURRENT)
-        val ci = Intent().apply {
-            setPackage(context!!.packageName)
-            setClass(context, MainActivity::class.java)
+        val lightOff = Intent().apply {
+            setAction(ACTION_REFRESH)
+            setComponent(ComponentName(context!!, TreeWidgetProvider::class.java))
+            putExtra("light", false)
         }
-        val configIntent = PendingIntent.getActivity(context, 1001, ci, PendingIntent.FLAG_UPDATE_CURRENT)
-        val ivTree = RemoteViews(context!!.packageName, R.layout.widget_tree)
-        ivTree.setOnClickPendingIntent(R.id.remote_iv_refresh, refreshIntent)
-        ivTree.setOnClickPendingIntent(R.id.remote_iv_tree, refreshIntent)
-        ivTree.setViewVisibility(R.id.remote_iv_words, View.GONE)
-        ivTree.setViewVisibility(R.id.remote_iv_refresh, View.GONE)
-        AppWidgetManager.getInstance(context).updateAppWidget(appWidgetIds, ivTree)
+        val lightOnIntent = PendingIntent.getBroadcast(context, 1000, lightOn, PendingIntent.FLAG_UPDATE_CURRENT)
+        val lightOffIntent = PendingIntent.getBroadcast(context, 1001, lightOff, PendingIntent.FLAG_UPDATE_CURRENT)
+        val remoteTree = RemoteViews(context!!.packageName, R.layout.widget_tree)
+        remoteTree.setOnClickPendingIntent(R.id.remote_iv_tree, lightOnIntent)
+        remoteTree.setOnClickPendingIntent(R.id.remote_iv_tree_light, lightOffIntent)
+        AppWidgetManager.getInstance(context).updateAppWidget(appWidgetIds, remoteTree)
     }
 
     override fun onAppWidgetOptionsChanged(
@@ -66,11 +83,6 @@ class TreeWidgetProvider: AppWidgetProvider() {
     override fun onEnabled(context: Context?) {
         super.onEnabled(context)
         Log.e("asdfg", "onEnabled")
-        if (context == null){
-            return
-        }
-        Log.e("asdfg", "onEnabled confirmed")
-
     }
 
     override fun onDisabled(context: Context?) {
