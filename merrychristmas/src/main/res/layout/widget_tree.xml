@@ -10,21 +10,12 @@
         android:id="@+id/remote_iv_tree"
         android:src="@drawable/ic_christmas_tree"/>
 
-    <TextView
-        android:id="@+id/remote_iv_words"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Merry Christmas"
-        android:textSize="20dp"
-        android:textColor="#f00"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="20dp"/>
-
     <ImageView
-        android:id="@+id/remote_iv_refresh"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/ic_launcher_foreground"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        android:id="@+id/remote_iv_tree_light"
+        android:src="@drawable/ic_christmas_tree_light"/>
+
 </FrameLayout>
