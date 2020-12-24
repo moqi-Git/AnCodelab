@@ -24,6 +24,7 @@ class TreeWidgetProvider : AppWidgetProvider() {
     private val UPDATE_DURATION = 500L
     private val handler: Handler = Handler(Looper.getMainLooper())
 
+    private var i: Int = 0
     private val mRunnable = Runnable { changeColor() }
 
     private fun changeColor() {
@@ -32,12 +33,28 @@ class TreeWidgetProvider : AppWidgetProvider() {
         } else {
             remoteTree?.setViewVisibility(R.id.remote_iv_tree_light, View.GONE)
         }
-        ++i
-        handler.postDelayed(mRunnable, UPDATE_DURATION)
+        i = (i + 1) % 2
+        val random = Math.random()
+        when {
+            random < 0.45 -> {
+                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.VISIBLE)
+                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.GONE)
+            }
+            random > 0.9 -> {
+                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.VISIBLE)
+                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.VISIBLE)
+            }
+            else -> {
+                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.GONE)
+                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.VISIBLE)
+            }
+        }
         AppWidgetManager.getInstance(App.context).updateAppWidget(
             ComponentName(App.context, TreeWidgetProvider::class.java),
             remoteTree
         )
+
+        handler.postDelayed(mRunnable, UPDATE_DURATION)
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -57,7 +74,6 @@ class TreeWidgetProvider : AppWidgetProvider() {
         }
     }
 
-    var i: Int = 0
     override fun onUpdate(
         context: Context?,
         appWidgetManager: AppWidgetManager?,
@@ -81,8 +97,8 @@ class TreeWidgetProvider : AppWidgetProvider() {
         lightOffIntent =
             PendingIntent.getBroadcast(context, 1001, lightOff, PendingIntent.FLAG_UPDATE_CURRENT)
         remoteTree = RemoteViews(context!!.packageName, R.layout.widget_tree)
-        remoteTree?.setOnClickPendingIntent(R.id.remote_iv_tree, lightOnIntent)
-        remoteTree?.setOnClickPendingIntent(R.id.remote_iv_tree_light, lightOffIntent)
+//        remoteTree?.setOnClickPendingIntent(R.id.remote_iv_tree, lightOnIntent)
+//        remoteTree?.setOnClickPendingIntent(R.id.remote_iv_tree_light, lightOffIntent)
         AppWidgetManager.getInstance(context).updateAppWidget(appWidgetIds, remoteTree)
     }
 
@@ -113,6 +129,7 @@ class TreeWidgetProvider : AppWidgetProvider() {
     override fun onDisabled(context: Context?) {
         super.onDisabled(context)
         Log.e("asdfg", "onDisabled")
+        handler.removeCallbacks(mRunnable)
     }
 
     override fun onRestored(context: Context?, oldWidgetIds: IntArray?, newWidgetIds: IntArray?) {

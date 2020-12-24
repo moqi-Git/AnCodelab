@@ -7,8 +7,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
+        android:id="@+id/remote_iv_tree_stars_1"
+        android:src="@drawable/ic_stars_1"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:id="@+id/remote_iv_tree_stars_2"
+        android:src="@drawable/ic_stars_2"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
         android:id="@+id/remote_iv_tree"
-        android:src="@drawable/ic_christmas_tree"/>
+        android:src="@drawable/ic_christmas_tree_only"/>
 
     <ImageView
         android:layout_width="match_parent"
