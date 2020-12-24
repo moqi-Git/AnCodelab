@@ -21,7 +21,7 @@ class TreeWidgetProvider : AppWidgetProvider() {
     private var lightOffIntent: PendingIntent? = null
     private var remoteTree: RemoteViews? = null
     private val ACTION_REFRESH = "com.moqi.merrychristmas.tree.ACTION_REFRESH"
-    private val UPDATE_DURATION = 500L
+    private val UPDATE_DURATION = 200L
     private val handler: Handler = Handler(Looper.getMainLooper())
 
     private var i: Int = 0
@@ -30,31 +30,35 @@ class TreeWidgetProvider : AppWidgetProvider() {
     private fun changeColor() {
         if (i % 2 == 0) {
             remoteTree?.setViewVisibility(R.id.remote_iv_tree_light, View.VISIBLE)
+            remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.VISIBLE)
+            remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.GONE)
         } else {
             remoteTree?.setViewVisibility(R.id.remote_iv_tree_light, View.GONE)
+            remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.GONE)
+            remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.VISIBLE)
         }
         i = (i + 1) % 2
-        val random = Math.random()
-        when {
-            random < 0.45 -> {
-                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.VISIBLE)
-                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.GONE)
-            }
-            random > 0.9 -> {
-                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.VISIBLE)
-                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.VISIBLE)
-            }
-            else -> {
-                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.GONE)
-                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.VISIBLE)
-            }
-        }
+//        val random = Math.random()
+//        when {
+//            random < 0.4 -> {
+//                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.VISIBLE)
+//                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.GONE)
+//            }
+//            random > 0.8 -> {
+//                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.VISIBLE)
+//                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.VISIBLE)
+//            }
+//            else -> {
+//                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_1, View.GONE)
+//                remoteTree?.setViewVisibility(R.id.remote_iv_tree_stars_2, View.VISIBLE)
+//            }
+//        }
         AppWidgetManager.getInstance(App.context).updateAppWidget(
             ComponentName(App.context, TreeWidgetProvider::class.java),
             remoteTree
         )
 
-        handler.postDelayed(mRunnable, UPDATE_DURATION)
+        handler.postDelayed(mRunnable, (UPDATE_DURATION * Math.random()).toLong()+800L)
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -68,7 +72,7 @@ class TreeWidgetProvider : AppWidgetProvider() {
                 ACTION_REFRESH -> {
                     remoteTree = RemoteViews(context!!.packageName, R.layout.widget_tree)
                     handler.removeCallbacks(mRunnable)
-                    handler.postDelayed(mRunnable, UPDATE_DURATION)
+                    handler.postDelayed(mRunnable, (UPDATE_DURATION * Math.random()).toLong()+800L)
                 }
             }
         }
@@ -123,7 +127,7 @@ class TreeWidgetProvider : AppWidgetProvider() {
         Log.e("asdfg", "onEnabled")
         remoteTree = RemoteViews(context!!.packageName, R.layout.widget_tree)
         handler.removeCallbacks(mRunnable)
-        handler.postDelayed(mRunnable, UPDATE_DURATION)
+        handler.postDelayed(mRunnable, (UPDATE_DURATION * Math.random()).toLong())
     }
 
     override fun onDisabled(context: Context?) {
