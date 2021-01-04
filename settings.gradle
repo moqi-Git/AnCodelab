@@ -1,4 +1,5 @@
 include ':tabbarlab'
+include ':systemview'
 include ':merrychristmas'
 include ':bitmaplab'
 include ':app'
