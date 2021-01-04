@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="方案一"
+        android:id="@+id/navi_item_1"/>
+
+    <item android:title="方案二"
+        android:id="@+id/navi_item_2"/>
+
+    <item android:title="方案三"
+        android:id="@+id/navi_item_3"/>
+
+    <item android:title="方案四"
+        android:id="@+id/navi_item_4"/>
+
+</menu>
