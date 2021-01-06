@@ -11,28 +11,24 @@
         android:id="@+id/sa_tab_layout_1">
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="春"
-            android:textAlignment="center" />
+            android:text="春" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="夏"
-            android:textAlignment="center" />
+            android:text="夏" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="秋"
-            android:textAlignment="center" />
+            android:text="秋" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="冬"
-            android:textAlignment="center" />
+            android:text="冬" />
 
     </com.google.android.material.tabs.TabLayout>
 

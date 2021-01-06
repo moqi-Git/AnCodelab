@@ -1,11 +1,12 @@
 package com.github.moqigit.tabbarlab
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.github.moqigit.tabbarlab.databinding.ActivityMainBinding
 import com.github.moqigit.tabbarlab.ui.SolutionA
 import com.github.moqigit.tabbarlab.ui.SolutionB
 import com.github.moqigit.tabbarlab.ui.SolutionC
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         vb = ActivityMainBinding.inflate(layoutInflater)
         setContentView(vb.root)
 
+        vb.mainBnv.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
         vb.mainBnv.setOnNavigationItemSelectedListener {
             selectSolutionById(it.itemId)
             return@setOnNavigationItemSelectedListener true
