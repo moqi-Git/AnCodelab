@@ -76,7 +76,7 @@ class Square(
             }
 
 //            GLES30.glDrawElements(GLES30.GL_TRIANGLES, drawOrder.size, GLES30.GL_UNSIGNED_SHORT, drawBuffer)
-            GLES30.glDrawArrays(GLES30.GL_TRIANGLE_FAN, 0, vertexCount)
+            GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, vertexCount)
             // Disable vertex array
             GLES30.glDisableVertexAttribArray(it)
         }

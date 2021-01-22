@@ -23,8 +23,8 @@ class MyGLRenderer: GLSurfaceView.Renderer{
         shape = Square(
             PointF(-0.5f, 0.5f),
             PointF(-0.5f, -0.5f),
-            PointF(0.5f, -0.5f),
             PointF(0.5f, 0.5f),
+            PointF(0.5f, -0.5f),
         )
     }
 
