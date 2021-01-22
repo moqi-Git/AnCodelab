@@ -2,6 +2,7 @@ package com.moqi.opengl.shape
 
 import android.opengl.GLES30
 import com.moqi.opengl.shader.Shader
+import com.moqi.opengl.texture.PictureTexture
 
 class Picture : Shape {
 
@@ -26,6 +27,7 @@ class Picture : Shape {
     private var mPositionHandle: Int = 0
     private var mTexturePosHandle: Int = 0
     private var mTextureHandle = 0
+    private lateinit var picTexture: PictureTexture
 
     init {
         val vertexShader = Shader.loadShader(GLES30.GL_VERTEX_SHADER, picVertexShader)
@@ -39,7 +41,9 @@ class Picture : Shape {
             mPositionHandle = GLES30.glGetAttribLocation(it, "aPosition")
             mTexturePosHandle = GLES30.glGetAttribLocation(it, "aCoordinate")
             mTextureHandle = GLES30.glGetUniformLocation(it, "uTexture")
+            picTexture = PictureTexture.createFormAsset("texture_snow.png")
         }
+
         GLES30.glUseProgram(mProgram)
     }
 
