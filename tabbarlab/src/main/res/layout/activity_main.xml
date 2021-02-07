@@ -17,13 +17,22 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_navi_bar" />
 
-    <FrameLayout
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/main_view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_bnv"
-        android:id="@+id/main_container"/>
+        app:layout_constraintBottom_toTopOf="@id/main_bnv"/>
+
+<!--    <FrameLayout-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/main_bnv"-->
+<!--        android:id="@+id/main_container"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

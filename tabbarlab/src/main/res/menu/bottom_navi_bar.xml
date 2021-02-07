@@ -10,7 +10,7 @@
     <item android:title="方案三"
         android:id="@+id/navi_item_3"/>
 
-    <item android:title="方案四"
-        android:id="@+id/navi_item_4"/>
+<!--    <item android:title="方案四"-->
+<!--        android:id="@+id/navi_item_4"/>-->
 
 </menu>
