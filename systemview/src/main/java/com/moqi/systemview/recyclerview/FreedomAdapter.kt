@@ -1,10 +1,12 @@
 package com.moqi.systemview.recyclerview
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.moqi.systemview.recyclerview.fake.ui.home.BannerViewHolder
+import com.moqi.systemview.recyclerview.fake.ui.home.CardTitleViewHolder
+import com.moqi.systemview.recyclerview.fake.ui.home.ImageShowItemViewHolder
+import com.moqi.systemview.recyclerview.fake.ui.home.ImageShowViewHolder
 
 /**
  *
@@ -86,6 +88,11 @@ object FreedomViewHolderFactory {
 
     init {
         registerViewHolder(1, ::BannerViewHolder)
+        registerViewHolder(2, ::CardTitleViewHolder)
+        registerViewHolder(3, ::ImageShowViewHolder)
+
+        //for ImageShowViewHolder
+        registerViewHolder(1001, ::ImageShowItemViewHolder)
     }
 }
 

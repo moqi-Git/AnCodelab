@@ -46,7 +46,7 @@ class BannerPagerAdapter(private val mList: MutableList<BannerItem>) :
         fun bind(data: BannerItem) {
             GlideApp.with(itemView.context)
                 .load(data.imageUrl)
-                .transform(RoundedCorners(10), CenterCrop())
+                .transform(CenterCrop(), RoundedCorners(10))
                 .into(vb.ivContent)
         }
     }

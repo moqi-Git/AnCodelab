@@ -6,6 +6,10 @@
     <ImageView
         android:id="@+id/iv_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/fake_left_margin"
+        android:layout_marginRight="@dimen/fake_right_margin"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp" />
 
 </FrameLayout>
