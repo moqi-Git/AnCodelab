@@ -2,6 +2,7 @@ package com.moqi.systemview.view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.widget.FrameLayout
 import kotlin.math.abs
@@ -14,20 +15,20 @@ class DispatchTouchFrameLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    private var downX = 0f
-    private var downY = 0f
+    private var mInitialTouchX = 0f
+    private var mInitialTouchY = 0f
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        Log.e("asdfg", "dispatchTouchEvent ${ev?.action}")
         when (ev?.action) {
             MotionEvent.ACTION_DOWN -> {
-                // 优化判断方式
-                downX = ev.x
-                downY = ev.y
-//                requestDisallowInterceptTouchEvent(true)
+                mInitialTouchX = ev.x
+                mInitialTouchY = ev.y
             }
 
             MotionEvent.ACTION_MOVE -> {
-                val dx = ev.x - downX
+                val dx = ev.x - mInitialTouchX
+                val dy = ev.y - mInitialTouchY
 
                 var hasScrollView = false
                 for (i in 0 until childCount) {
@@ -40,9 +41,8 @@ class DispatchTouchFrameLayout @JvmOverloads constructor(
                     }
                 }
 
-                val dy = ev.y - downY
                 val r = abs(dy) / abs(dx)
-                if (r < 0.45f && hasScrollView) {
+                if (r < 0.6f && hasScrollView) {
                     requestDisallowInterceptTouchEvent(true)
                 }
             }
@@ -56,5 +56,15 @@ class DispatchTouchFrameLayout @JvmOverloads constructor(
         }
 
         return super.dispatchTouchEvent(ev)
+    }
+
+    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
+        Log.e("asdfg", "onInterceptTouchEvent ${ev?.action}")
+        return super.onInterceptTouchEvent(ev)
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        Log.e("asdfg", "onTouchEvent ${event?.action}")
+        return super.onTouchEvent(event)
     }
 }

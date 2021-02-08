@@ -10,7 +10,7 @@ class HomeViewModel : ViewModel() {
     val contentData = MutableLiveData<List<VHProvider>>()
 
     private val host = "http://192.168.0.104:8080"
-    private val path = "fake"
+    private val path = "open"
 
     init {
         contentData.value = arrayListOf(
@@ -36,14 +36,25 @@ class HomeViewModel : ViewModel() {
                         "10万",
                         ::clickImageCover
                     ),
-                    ImageListItem(2, "二哈拆家", "$host/$path/cover3.jpg", "100", ::clickImageCover),
-                    ImageListItem(3, "格子|黑白纷争", "$host/$path/cover4.jpg", "100", ::clickImageCover),
-                    ImageListItem(4, "黑色玫瑰", "$host/$path/cover5.jpg", "100", ::clickImageCover),
-                    ImageListItem(5, "你想尝一下吗", "$host/$path/cover6.jpg", "100", ::clickImageCover),
+                    ImageListItem(2, "二哈拆家", "$host/$path/cover3.jpg", "1", ::clickImageCover),
+                    ImageListItem(
+                        3,
+                        "格子|黑白纷争",
+                        "$host/$path/cover4.jpg",
+                        "36456",
+                        ::clickImageCover
+                    ),
+                    ImageListItem(4, "黑色玫瑰", "$host/$path/cover5.jpg", "1000", ::clickImageCover),
+                    ImageListItem(5, "你想听一下吗", "$host/$path/cover6.jpg", "443", ::clickImageCover),
                 )
             ),
             CardTitle(
                 "推荐视频",
+                "更多",
+                ::clickRecommend,
+            ),
+            CardTitle(
+                "推荐播单",
                 "更多",
                 ::clickRecommend,
             ),
@@ -56,6 +67,24 @@ class HomeViewModel : ViewModel() {
                 "新作预告",
                 "预告日历",
                 ::clickRecommend,
+            ),
+            CalendarItem(
+                "今天",
+                "热点",
+                2,
+                "【进入游戏】你有想守护的人吗",
+                "$host/$path/cover5.jpg",
+                1,
+                ::clickImageCover
+            ),
+            CalendarItem(
+                "明天",
+                "预告",
+                1,
+                "鸽鸽的新作一定发售",
+                "$host/$path/banner2.jpg",
+                1,
+                ::clickImageCover
             ),
         )
     }

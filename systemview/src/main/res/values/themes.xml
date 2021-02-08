@@ -13,4 +13,14 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="labelHot">
+        <item name="android:textColor">#FFB74D</item>
+        <item name="backgroundColor">#FFF3D9</item>
+    </style>
+
+    <style name="labelNormal">
+        <item name="android:textColor">@color/text_gray_3</item>
+        <item name="backgroundColor">#E6E6E6</item>
+    </style>
 </resources>

@@ -49,6 +49,7 @@ class ImageShowItemViewHolder(parent: ViewGroup) : FreedomViewHolder<ImageListIt
         vb.tvViewCount.text = data.pageViewCount
         GlideApp.with(itemView.context)
             .load(data.coverUrl)
+            .error(R.drawable.ic_jia)
             .transform(CenterCrop(), RoundedCorners(8))
             .into(vb.ivCover)
         data.action?.let {

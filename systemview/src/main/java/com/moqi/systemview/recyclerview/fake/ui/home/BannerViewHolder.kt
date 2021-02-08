@@ -21,6 +21,7 @@ class BannerViewHolder(parent: ViewGroup) : FreedomViewHolder<Banner>(
 ) {
     private val binding: ItemVhBannerBinding = ItemVhBannerBinding.bind(itemView)
     private val adapter = BannerPagerAdapter(mutableListOf())
+//    private val mViews = mutableListOf<View>()
 
     init {
         binding.vpBanner.adapter = adapter
@@ -28,6 +29,16 @@ class BannerViewHolder(parent: ViewGroup) : FreedomViewHolder<Banner>(
 
     override fun onBindViewHolder() {
         adapter.setNewList(data.bannerList)
+//        for (i in data.bannerList) {
+//            val v = LayoutInflater.from(itemView.context).inflate(R.layout.item_banner_pager, null, false)
+//            val iv = v.findViewById<ImageView>(R.id.iv_content)
+//            GlideApp.with(itemView.context)
+//                .load(i.imageUrl)
+//                .transform(CenterCrop(), RoundedCorners(10))
+//                .into(iv)
+//            mViews.add(v)
+//        }
+//        binding.vpBanner.adapter = BannerVPAdapter1(mViews)
     }
 
     override fun onRecycle() {
@@ -46,6 +57,7 @@ class BannerPagerAdapter(private val mList: MutableList<BannerItem>) :
         fun bind(data: BannerItem) {
             GlideApp.with(itemView.context)
                 .load(data.imageUrl)
+                .error(R.drawable.ic_jia)
                 .transform(CenterCrop(), RoundedCorners(10))
                 .into(vb.ivContent)
         }
@@ -78,3 +90,25 @@ data class BannerItem(
     val label: String,
     val imageUrl: String
 )
+
+//class BannerVPAdapter1(private val views: List<View>): PagerAdapter(){
+//    override fun getCount(): Int {
+//        return views.size
+//    }
+//
+//    override fun isViewFromObject(view: View, `object`: Any): Boolean {
+//        return view == `object`
+//    }
+//
+//    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+////        return super.instantiateItem(container, position)
+//        container.addView(views[position])
+//        return views[position]
+//    }
+//
+//    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+////        super.destroyItem(container, position, `object`)
+//        container.removeView(views[position])
+//    }
+//
+//}

@@ -8,9 +8,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.moqi.systemview.R
 import com.moqi.systemview.databinding.ActivityFakeBinding
-import com.moqi.systemview.recyclerview.fake.ui.dashboard.DashboardFragment
 import com.moqi.systemview.recyclerview.fake.ui.home.HomeFragment
 import com.moqi.systemview.recyclerview.fake.ui.notifications.NotificationsFragment
+import com.moqi.systemview.recyclerview.fake.ui.timeline.TimelineFragment
 
 class FakeActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class FakeActivity : AppCompatActivity() {
 
     private val fragments = listOf(
         ::HomeFragment,
-        ::DashboardFragment,
+        ::TimelineFragment,
         ::NotificationsFragment,
     )
 

@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moqi.systemview.databinding.FragmentHomeBinding
@@ -29,8 +26,15 @@ class HomeFragment : Fragment() {
 
         val adapter = FreedomAdapter(mutableListOf())
         vb.rvHome.adapter = adapter
-        homeViewModel.contentData.observe(viewLifecycleOwner){
+        homeViewModel.contentData.observe(viewLifecycleOwner) {
             adapter.setNewList(it)
+        }
+
+        vb.refreshView.setOnRefreshListener {
+            vb.refreshView.postDelayed(
+                { vb.refreshView.isRefreshing = false },
+                1200
+            )
         }
 
         return vb.root
