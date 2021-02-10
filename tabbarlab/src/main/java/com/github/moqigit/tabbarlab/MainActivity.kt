@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 import androidx.viewpager.widget.ViewPager
 import com.github.moqigit.tabbarlab.databinding.ActivityMainBinding
 import com.github.moqigit.tabbarlab.ui.SolutionA
