@@ -10,7 +10,7 @@ class HomeViewModel : ViewModel() {
     val contentData = MutableLiveData<List<VHProvider>>()
 
     private val host = "http://192.168.0.104:8080"
-    private val path = "open"
+    private val path = "fake"
 
     init {
         contentData.value = arrayListOf(

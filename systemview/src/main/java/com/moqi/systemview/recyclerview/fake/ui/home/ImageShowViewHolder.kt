@@ -27,6 +27,8 @@ class ImageShowViewHolder(parent: ViewGroup) : FreedomViewHolder<ImageList>(
         vb.rvImageShow.adapter = adapter
         vb.rvImageShow.layoutManager =
             LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+
+//        vb.rvImageShow.layoutManager = FanLayoutManager(itemView.context)
         vb.rvImageShow.addItemDecoration(ImageShowDecoration())
     }
 

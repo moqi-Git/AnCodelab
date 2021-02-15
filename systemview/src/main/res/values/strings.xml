@@ -2,6 +2,6 @@
     <string name="app_name">SystemView</string>
     <string name="title_activity_fake">模仿游戏</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">Timeline</string>
     <string name="title_notifications">Notifications</string>
 </resources>

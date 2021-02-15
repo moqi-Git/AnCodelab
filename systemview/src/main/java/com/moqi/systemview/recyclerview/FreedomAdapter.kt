@@ -88,6 +88,7 @@ object FreedomViewHolderFactory {
         registerViewHolder(2, ::CardTitleViewHolder)
         registerViewHolder(3, ::ImageShowViewHolder)
         registerViewHolder(4, ::CalendarItemViewHolder)
+        registerViewHolder(5, ::PlayListViewHolder)
 
         //for ImageShowViewHolder
         registerViewHolder(1001, ::ImageShowItemViewHolder)
