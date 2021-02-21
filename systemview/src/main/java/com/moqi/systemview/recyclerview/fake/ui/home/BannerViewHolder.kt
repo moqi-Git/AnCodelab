@@ -68,9 +68,14 @@ class BannerPagerAdapter(private val mList: MutableList<BannerItem>) :
     }
 
     override fun onBindViewHolder(holder: BannerPagerHolder, position: Int) {
-        holder.bind(mList[position])
+//        val realPosition = position % mList.size
+        val realPosition = position
+        val data = mList[realPosition]
+        holder.bind(data)
     }
 
+    // 可以无限，但不能向左，差了一点。
+//    override fun getItemCount(): Int = Integer.MAX_VALUE
     override fun getItemCount(): Int = mList.size
 
     fun setNewList(list: List<BannerItem>) {

@@ -18,7 +18,6 @@ class FreedomAdapter(private val contentList: MutableList<VHProvider>) :
         viewType: Int
     ): FreedomViewHolder<VHProvider> {
         val vh = FreedomViewHolderFactory.getViewHolder(viewType)(parent)
-        requireNotNull(vh)
         return vh as FreedomViewHolder<VHProvider>
     }
 
