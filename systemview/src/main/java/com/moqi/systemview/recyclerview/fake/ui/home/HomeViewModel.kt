@@ -9,8 +9,8 @@ class HomeViewModel : ViewModel() {
 
     val contentData = MutableLiveData<List<VHProvider>>()
 
-    private val host = "http://192.168.0.104:8080"
-    private val path = "fake"
+    private val host = "http://172.17.0.93:8080"
+    private val path = "open"  // fake open
 
     init {
         contentData.value = arrayListOf(
@@ -62,6 +62,13 @@ class HomeViewModel : ViewModel() {
                 "作者排行",
                 "查看全部",
                 ::clickRecommend,
+            ),
+            RankList(
+                arrayListOf(
+                    RankListItem("首当其冲", "$host/$path/cover1.jpg", "人为什么要上班", 1, "who"),
+                    RankListItem("不想上班怎么办", "$host/$path/cover2.jpg", "退休后的美好生活", 2, "who"),
+                    RankListItem("好困啊", "$host/$path/cover3.jpg", "人为什么不睡觉", 3, "who"),
+                )
             ),
             CardTitle(
                 "新作预告",
