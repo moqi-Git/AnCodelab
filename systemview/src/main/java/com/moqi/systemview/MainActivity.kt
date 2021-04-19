@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.moqi.systemview.databinding.ActivityMainBinding
+import com.moqi.systemview.drag.MoveActivity
 import com.moqi.systemview.recyclerview.fake.FakeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,10 @@ class MainActivity : AppCompatActivity() {
 
         vb.tvMain.setOnClickListener {
             startActivity(Intent(this, FakeActivity::class.java))
+        }
+
+        vb.tvMove.setOnClickListener {
+            startActivity(Intent(this, MoveActivity::class.java))
         }
     }
 }

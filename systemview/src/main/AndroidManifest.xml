@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moqi.systemview">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLab"
         android:usesCleartextTraffic="true">
+        <activity android:name=".drag.MoveActivity"></activity>
         <activity
             android:name=".recyclerview.fake.FakeActivity"
-            android:label="@string/title_activity_fake"></activity>
+            android:label="@string/title_activity_fake" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
